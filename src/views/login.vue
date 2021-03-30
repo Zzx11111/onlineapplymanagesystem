@@ -51,6 +51,13 @@ export default {
       this.$refs[formName].validate(async (valid) => {
         if(valid){
           const data = await adminLogin(this.loginForm)
+          if(data.token == null){
+            this.$message({
+              type:"warning",
+              message:data.msg
+            })
+            return false
+          }
           sessionStorage.setItem('token',data.token)
           this.$store.dispatch('setMenu')
           // dynamicRouter()
