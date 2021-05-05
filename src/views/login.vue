@@ -43,6 +43,25 @@ export default {
       }
     };
   },
+  created(){
+    var loginName = ""
+    var account = ""
+    var cookie = document.cookie.split(";");
+    console.log(cookie);
+    for(var i = 0;i<cookie.length;i++){
+        var crumb = cookie[i].split("=");
+        if(crumb[0] == 'loginDspName'){
+            loginName = crumb[1]
+        }
+        console.log(crumb[0].trim());
+        if(crumb[0].trim() == '1loginAccount'){
+          console.log('ddddddddddd');
+          account = crumb[1]
+        }
+    }
+    console.log(loginName);
+    console.log(account);
+  },
   methods: {
     clear(formName) {
       this.$refs[formName].resetFields();

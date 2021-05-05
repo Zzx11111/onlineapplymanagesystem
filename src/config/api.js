@@ -15,7 +15,7 @@ export function getAdminList(){
 export function getRoleList(){
   return http.get({url:'/v1/admin/getRole'})
 }
-//下面的没完成
+
 export function editAdmin(data){
   return http.post({url:'v1/admin/editAdmin',data:data})
 }
@@ -37,5 +37,20 @@ export function deleteUser(data){
 }
 
 export function getActivityList(){
-  return http.get({url:'/v1/Activity/getActivityList'})
+  return http.get({url:'/v1/activity/getActivity'})
+}
+
+export function deleteActivity(id){
+  return http.post({url:'/v1/activity/deleteActivity',data:{id}})
+}
+
+export function getComment(aid){
+  return http.get({url:`/v1/comment/getComment?aid=${aid}`})
+}
+export function deleteComment(id){
+  return http.post({url:'/v1/comment/deleteComment',data:{id}})
+}
+
+export function editAdminPassword(oldPassword,newPassword){
+  return http.post({url:'/v1/admin/editPassword',data:{oldPassword,newPassword}})
 }
